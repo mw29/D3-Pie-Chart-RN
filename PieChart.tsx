@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { View, TouchableWithoutFeedback } from 'react-native';
+import React from 'react';
+import { View } from 'react-native';
 import Svg, { G, Path, Text } from 'react-native-svg';
 import * as d3 from 'd3';
 
@@ -29,6 +29,7 @@ const PieChart: React.FC<PieChartProps> = ({
         .pie<DataItem>()
         .sort(null)
         .value(d => d.value);
+
     const arcGenerator = d3
         .arc()
         .innerRadius(innerRadius)
@@ -56,7 +57,7 @@ const PieChart: React.FC<PieChartProps> = ({
     };
 
     return (
-        <View style={{ width, height }}>
+        <View >
             <Svg width={width} height={height}>
                 <G x={width / 2} y={height / 2}>
                     {arcs.map((arc, index) => (
@@ -82,4 +83,3 @@ const PieChart: React.FC<PieChartProps> = ({
 };
 
 export default PieChart;
-
